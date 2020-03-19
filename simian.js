@@ -10,10 +10,18 @@
 //==/UserScript==
 (() => {
 	const toolbar = document.createElement('torn-tools')
-	toolbar.innerHTML = `
-		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-		<script src="https://jamesonaranda.com/torn-tools/src/toolbar.js" crossorigin></script>
-	`
 	document.body.appendChild(toolbar)
+
+	const scripts = [
+		"https://unpkg.com/react@16/umd/react.development.js",
+		"https://unpkg.com/react-dom@16/umd/react-dom.development.js",
+		"https://jamesonaranda.com/torn-tools/src/toolbar.js"
+	]
+
+	scripts.forEach(script => {
+		const e = document.createElement('script')
+		e.src = script
+		e.crossOrigin = true
+		toolbar.appendChild(e)
+	})
 })()
