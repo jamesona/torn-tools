@@ -1,4 +1,5 @@
 'use strict';
+import './toolbar.css'
 
 const e = React.createElement;
 
