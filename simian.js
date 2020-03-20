@@ -7,21 +7,7 @@
 //@match https://www.torn.com
 //@include https://www.torn.com*
 //@grant none
+//@require https://unpkg.com/react@16/umd/react.development.js
+//@require https://unpkg.com/react-dom@16/umd/react-dom.development.js
+//@require https://jamesonaranda.com/torn-tools/src/toolbar.js
 //==/UserScript==
-(() => {
-	const toolbar = document.createElement('torn-tools')
-	document.body.appendChild(toolbar)
-
-	const scripts = [
-		"https://unpkg.com/react@16/umd/react.development.js",
-		"https://unpkg.com/react-dom@16/umd/react-dom.development.js",
-		"https://jamesonaranda.com/torn-tools/src/toolbar.js"
-	]
-
-	scripts.forEach(script => {
-		const e = document.createElement('script')
-		e.src = script
-		e.crossOrigin = true
-		toolbar.appendChild(e)
-	})
-})()
