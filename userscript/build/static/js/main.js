@@ -9878,7 +9878,7 @@ log("React script has successfully started");// Do required initial work. Gets c
 // so that elements can be re-inserted as a user navigates a page with
 // different routes.
 function main(){return _main.apply(this,arguments);}// Call `main()` every time the page URL changes, including on first load.
-function _main(){_main=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var body,container;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return awaitElement("#viewport");case 2:body=_context.sent;container=document.createElement("div");body.appendChild(container);react_dom_default.a.render(react_default.a.createElement(src_App,null),container);case 6:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}addLocationChangeCallback(function(){// Greasemonkey doesn't bubble errors up to the main console,
+function _main(){_main=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var body,container;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return awaitElement("body");case 2:body=_context.sent;container=document.createElement("div");body.appendChild(container);react_dom_default.a.render(react_default.a.createElement(src_App,null),container);case 6:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}addLocationChangeCallback(function(){// Greasemonkey doesn't bubble errors up to the main console,
 // so we have to catch them manually and log them
 main().catch(function(e){log(e);});});
 
