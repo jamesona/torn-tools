@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
 import { awaitElement, log, addLocationChangeCallback } from "./utils";
+
+import Toolbar from "./Toolbar";
 
 log("React script has successfully started");
 
@@ -13,9 +13,9 @@ async function main() {
     // Find <body/>. This can be any element. We wait until
     // the page has loaded enough for that element to exist.
     const body = await awaitElement("body");
-    const container = document.createElement("div");
+    const container = document.createElement("torn-tools");
     body.appendChild(container);
-    ReactDOM.render(<App />, container);
+    ReactDOM.render(<Toolbar />, container);
 }
 
 // Call `main()` every time the page URL changes, including on first load.
