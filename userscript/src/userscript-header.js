@@ -6,8 +6,7 @@
 //@author Jameson Aranda
 //@match https://www.torn.com
 //@include https://www.torn.com*
+//@match https://google.com
+//@include https://google.com*
 //@grant none
-//@require https://unpkg.com/react@16/umd/react.development.js
-//@require https://unpkg.com/react-dom@16/umd/react-dom.development.js
-//@require https://jamesonaranda.com/torn-tools/src/toolbar.js
 //==/UserScript==
