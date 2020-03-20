@@ -13,10 +13,19 @@ const toolbarStyle = {
 	width: '100%'
 }
 
-const Toolbar = () => (
-	<div style={toolbarStyle}>
-		Hello World
-	</div>
-)
+class Toolbar extends React.component {
+	constructor(props) {
+		super(props)
+		this.state = {}
+	}
+
+	render() {
+		return `
+			<div style={toolbarStyle}>
+				Hello World
+			</div>
+		`
+	}
+}
 
 ReactDOM.render(e(Toolbar), toolbar)
