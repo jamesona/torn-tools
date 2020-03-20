@@ -2,25 +2,21 @@ const toolbar = document.createElement('torn-tools')
 document.body.appendChild(toolbar)
 
 
-const e = React.createElement;
+const e = React.createElement
 
-class LikeButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { liked: false };
-  }
-
-  render() {
-    if (this.state.liked) {
-      return 'You liked this.';
-    }
-
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
-    );
-  }
+const toolbarStyle = {
+	backgroundColor: 'black',
+	display: 'flex',
+	left: '10px',
+	position: 'fixed',
+	top: '10px',
+	width: '100%'
 }
 
-ReactDOM.render(e(LikeButton), toolbar);
+const Toolbar = () => (
+	<div style={toolbarStyle}>
+		Hello World
+	</div>
+)
+
+ReactDOM.render(e(Toolbar), toolbar)
