@@ -1,11 +1,6 @@
-'use strict';
-import './toolbar.css'
-
 const toolbar = document.createElement('torn-tools')
 document.body.appendChild(toolbar)
 
-console.log('hello world')
-debugger
 
 const e = React.createElement;
 
@@ -28,5 +23,4 @@ class LikeButton extends React.Component {
   }
 }
 
-const domContainer = document.querySelector('body');
-ReactDOM.render(e(LikeButton), domContainer);
+ReactDOM.render(e(LikeButton), toolbar);
