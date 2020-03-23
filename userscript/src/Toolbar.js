@@ -4,10 +4,11 @@ import React from 'react';
 const toolbarStyle = {
 	backgroundColor: 'black',
 	display: 'flex',
-	left: '10px',
+	left: '0',
 	position: 'fixed',
-	top: '10px',
-	width: '100%'
+	top: '0',
+  height: '100vh',
+  flexDirection: 'column'
 }
 
 function Tools() {
