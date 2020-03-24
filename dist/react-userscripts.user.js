@@ -1,7 +1,7 @@
 //==UserScript==
 //@name torn-tools
 //@namespace http://tampermonkey.net/
-//@version 0.5.0.3
+//@version 0.5.0.4
 //@description tools for http://torn.com
 //@author Jameson Aranda
 //@match https://www.torn.com
@@ -100,19 +100,19 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(5);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
 if (true) {
   module.exports = __webpack_require__(6);
 } else {}
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(5);
+
 
 /***/ }),
 /* 2 */
@@ -1416,7 +1416,7 @@ exports.version = "16.13.1";
 */
 
 
-var aa = __webpack_require__(1),
+var aa = __webpack_require__(0),
     n = __webpack_require__(2),
     r = __webpack_require__(8);
 
@@ -9172,7 +9172,7 @@ exports.unstable_wrapCallback = function (a) {
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(0);
+var regenerator = __webpack_require__(1);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
@@ -9212,7 +9212,7 @@ function _asyncToGenerator(fn) {
   };
 }
 // EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(1);
+var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
@@ -9249,9 +9249,14 @@ var oldHref=window.location.href;var body=document.querySelector('body');var obs
  * @param {string} selector
  * @returns {DOMNode}
  */function awaitElement(_x){return _awaitElement.apply(this,arguments);}function _awaitElement(){_awaitElement=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(selector){var MAX_TRIES,tries;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:MAX_TRIES=60;tries=0;return _context.abrupt("return",new Promise(function(resolve,reject){function probe(){tries++;return document.querySelector(selector);}function delayedProbe(){if(tries>=MAX_TRIES){log("Can't find element with selector",selector);reject();return;}var elm=probe();if(elm){resolve(elm);return;}window.setTimeout(delayedProbe,250);}delayedProbe();}));case 3:case"end":return _context.stop();}}},_callee);}));return _awaitElement.apply(this,arguments);}
+// CONCATENATED MODULE: ./src/Market.js
+function Market(){return'market';}/* harmony default export */ var src_Market = (Market);
+// CONCATENATED MODULE: ./src/Faction.js
+function Faction(){return'faction';}/* harmony default export */ var src_Faction = (Faction);
+// CONCATENATED MODULE: ./src/Bazaar.js
+function Bazaar(){return'bazaar';}/* harmony default export */ var src_Bazaar = (Bazaar);
 // CONCATENATED MODULE: ./src/Toolbar.js
-// import './Tools.css';
-var toolbarStyle={backgroundColor:'black',display:'flex',left:'0',position:'fixed',top:'0',height:'100vh',flexDirection:'column'};function Toolbar(){return react_default.a.createElement("div",{style:toolbarStyle},function(){switch(window.location.pathname){case'/factions.php':case'/bazaar.php':case'/imarket.php':default:return'hello world';}}());}/* harmony default export */ var src_Toolbar = (Toolbar);
+var toolbarStyle={display:'flex',left:'0',position:'fixed',top:'0',height:'100vh',flexDirection:'column'};function Toolbar(){return react_default.a.createElement("div",{style:toolbarStyle},function(){switch(window.location.pathname){case'/imarket.php':return react_default.a.createElement(src_Market,null);case'/factions.php':return react_default.a.createElement(src_Faction,null);case'/bazaar.php':return react_default.a.createElement(src_Bazaar,null);default:return'hello world';}}());}/* harmony default export */ var src_Toolbar = (Toolbar);
 // CONCATENATED MODULE: ./src/index.js
 log('React script has successfully started');function main(){return _main.apply(this,arguments);}function _main(){_main=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var body,container;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return awaitElement('body');case 2:body=_context.sent;container=document.createElement('torn-tools');body.appendChild(container);react_dom_default.a.render(react_default.a.createElement(src_Toolbar,null),container);case 6:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}addLocationChangeCallback(function(){main().catch(function(e){log(e);});});
 

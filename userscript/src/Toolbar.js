@@ -1,8 +1,10 @@
 import React from 'react'
-// import './Tools.css';
+
+import Market from './Market'
+import Faction from './Faction'
+import Bazaar from './Bazaar'
 
 const toolbarStyle = {
-	backgroundColor: 'black',
 	display: 'flex',
 	left: '0',
 	position: 'fixed',
@@ -16,9 +18,12 @@ function Toolbar() {
 		<div style={toolbarStyle}>
 			{(() => {
 				switch (window.location.pathname) {
-					case '/factions.php':
-					case '/bazaar.php':
 					case '/imarket.php':
+						return <Market />
+					case '/factions.php':
+						return <Faction />
+					case '/bazaar.php':
+						return <Bazaar />
 					default:
 						return 'hello world'
 				}
