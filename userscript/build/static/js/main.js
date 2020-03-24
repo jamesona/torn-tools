@@ -9213,13 +9213,13 @@ var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
  *
  * @export
  * @param {*} args
- */function log(){var _console;for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}(_console=console).log.apply(_console,["Userscript (React Mode):"].concat(args));}/**
+ */function log(){var _console;for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}(_console=console).log.apply(_console,['Userscript (React Mode):'].concat(args));}/**
  * Wrapped version of `fetch` that logs the output as it's being fetched.
  * It also specifies the full path, because in Greasemonkey, the full path is needed.
  *
  * @param {string} arg
  * @returns {Promise} - the `fetch` promise
- */function logFetch(arg){var url=new URL(arg,window.location);log("fetching",""+url);return fetch(""+url,{credentials:"include"});}/**
+ */function logFetch(arg){var url=new URL(arg,window.location);log('fetching',''+url);return fetch(''+url,{credentials:'include'});}/**
  * Ensure `callback` is called every time window.location changes
  * Code derived from https://stackoverflow.com/questions/3522090/event-when-window-location-href-changes
  *
@@ -9228,7 +9228,7 @@ var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
  * @returns {MutationObserver} - MutationObserver that watches the URL
  */function addLocationChangeCallback(callback){// Run the callback once right at the start
 window.setTimeout(callback,0);// Set up a `MutationObserver` to watch for changes in the URL
-var oldHref=window.location.href;var body=document.querySelector("body");var observer=new MutationObserver(function(mutations){if(mutations.some(function(){return oldHref!==document.location.href;})){oldHref=document.location.href;callback();}});observer.observe(body,{childList:true,subtree:true});return observer;}/**
+var oldHref=window.location.href;var body=document.querySelector('body');var observer=new MutationObserver(function(mutations){if(mutations.some(function(){return oldHref!==document.location.href;})){oldHref=document.location.href;callback();}});observer.observe(body,{childList:true,subtree:true});return observer;}/**
  * Awaits for an element with the specified `selector` to be found
  * and then returns the selected dom node.
  * This is used to delay rendering a widget until its parent appears.
@@ -9239,9 +9239,9 @@ var oldHref=window.location.href;var body=document.querySelector("body");var obs
  */function awaitElement(_x){return _awaitElement.apply(this,arguments);}function _awaitElement(){_awaitElement=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(selector){var MAX_TRIES,tries;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:MAX_TRIES=60;tries=0;return _context.abrupt("return",new Promise(function(resolve,reject){function probe(){tries++;return document.querySelector(selector);}function delayedProbe(){if(tries>=MAX_TRIES){log("Can't find element with selector",selector);reject();return;}var elm=probe();if(elm){resolve(elm);return;}window.setTimeout(delayedProbe,250);}delayedProbe();}));case 3:case"end":return _context.stop();}}},_callee);}));return _awaitElement.apply(this,arguments);}
 // CONCATENATED MODULE: ./src/Toolbar.js
 // import './Tools.css';
-var toolbarStyle={backgroundColor:'black',display:'flex',left:'0',position:'fixed',top:'0',height:'100vh',flexDirection:'column'};function Tools(){return react_default.a.createElement("div",{style:toolbarStyle},"hello world");}/* harmony default export */ var Toolbar = (Tools);
+var toolbarStyle={backgroundColor:'black',display:'flex',left:'0',position:'fixed',top:'0',height:'100vh',flexDirection:'column'};function Toolbar(){return react_default.a.createElement("div",{style:toolbarStyle},function(){switch(window.location.pathname){case'/factions.php':case'/bazaar.php':case'/imarket.php':default:return'hello world';}}());}/* harmony default export */ var src_Toolbar = (Toolbar);
 // CONCATENATED MODULE: ./src/index.js
-log("React script has successfully started");function main(){return _main.apply(this,arguments);}function _main(){_main=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var body,container;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return awaitElement("body");case 2:body=_context.sent;container=document.createElement("torn-tools");body.appendChild(container);react_dom_default.a.render(react_default.a.createElement(Toolbar,null),container);case 6:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}addLocationChangeCallback(function(){main().catch(function(e){log(e);});});
+log('React script has successfully started');function main(){return _main.apply(this,arguments);}function _main(){_main=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var body,container;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return awaitElement('body');case 2:body=_context.sent;container=document.createElement('torn-tools');body.appendChild(container);react_dom_default.a.render(react_default.a.createElement(src_Toolbar,null),container);case 6:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}addLocationChangeCallback(function(){main().catch(function(e){log(e);});});
 
 /***/ })
 /******/ ]);

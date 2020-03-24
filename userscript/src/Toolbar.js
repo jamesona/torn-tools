@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 // import './Tools.css';
 
 const toolbarStyle = {
@@ -7,16 +7,24 @@ const toolbarStyle = {
 	left: '0',
 	position: 'fixed',
 	top: '0',
-  height: '100vh',
-  flexDirection: 'column'
+	height: '100vh',
+	flexDirection: 'column'
 }
 
-function Tools() {
-  return (
-    <div style={toolbarStyle}>
-      hello world
-    </div>
-  );
+function Toolbar() {
+	return (
+		<div style={toolbarStyle}>
+			{(() => {
+				switch (window.location.pathname) {
+					case '/factions.php':
+					case '/bazaar.php':
+					case '/imarket.php':
+					default:
+						return 'hello world'
+				}
+			})()}
+		</div>
+	)
 }
 
-export default Tools;
+export default Toolbar
