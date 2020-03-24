@@ -25,7 +25,7 @@ function Toolbar() {
 					case '/bazaar.php':
 						return <Bazaar />
 					default:
-						return 'hello world'
+						return null
 				}
 			})()}
 		</div>
