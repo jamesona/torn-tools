@@ -12,8 +12,8 @@ export function parsePrice(price: string): number {
 	return Number(price.replace(/[$,]/g, ''))
 }
 
-function getPrice(confirmBar: HTMLElement): number {
-	let match: any[] | null = confirmBar.innerText
+function getPrice(element: HTMLElement): number {
+	let match: any[] | null = element.innerText
 		.replace(',', '')
 		.match(/\$(\d+)/)
 	if (match) {
