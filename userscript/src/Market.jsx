@@ -11,8 +11,7 @@ const getBuyButton = e => e.children[1]
 const buyTopItem = () => {
 	const e = getTopItemElement()
 
-	// listen for changes on the market list,
-	// fire a callback when the confirmation row is added
+	// listen for changes on the market list, and fire a callback when the row is added
 	new MutationObserver(([mutation], observer) => {
 		observer.disconnect()
 		setTimeout(() => {
@@ -30,7 +29,7 @@ const buyTopItem = () => {
 const buttonStyle = {}
 
 function Market() {
-	const menu = {
+	const functions = {
 		'Buy Top Item': {
 			disabled: () => !!getTopItemElement(),
 			onClick: () => buyTopItem(),
@@ -39,11 +38,11 @@ function Market() {
 
 	return (
 		<div>
-			{Object.keys(menu).map(key => {
-				const { disabled, onClick } = menu[key] || {}
+			{Object.keys(functions).map(key => {
+				const { disabled, onClick } = functions[key] || {}
 				return (
 					<button
-						onClick={() => onClick()}
+						onClick={onClick}
 						disabled={disabled}
 						style={buttonStyle}
 					>
