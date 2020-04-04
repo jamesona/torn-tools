@@ -8,41 +8,40 @@ const marketItemSelector = '.items .item'
 const getTopItemElement = () => document.querySelector(marketItemSelector)
 const getBuyButton = e => e.children[1]
 // const getConfirmButton = e => e.nextElementSibling.children[0].children[2]
-const buyTopItem = () => {
-	const e = getTopItemElement()
-
-	// listen for changes on the market list, and fire a callback when the row is added
-	new MutationObserver(([mutation], observer) => {
-		observer.disconnect()
-		setTimeout(() => {
-			mutation.target.children[2].click()
-		}, 100)
-	}).observe(e.parentElement, {
-		attributes: false,
-		childList: true,
-		subtree: true,
-	})
-
-	getBuyButton(e).click()
-}
 
 const buttonStyle = {}
 
 function Market() {
-	const functions = {
+	const menu = {
 		'Buy Top Item': {
 			disabled: () => !!getTopItemElement(),
-			onClick: () => buyTopItem(),
+			onClick: () => () => {
+				debugger
+				const e = getTopItemElement()
+
+				// listen for changes on the market list, and fire a callback when the row is added
+				new MutationObserver(([mutation], observer) => {
+					observer.disconnect()
+					setTimeout(() => {
+						mutation.target.children[2].click()
+					}, 100)
+				}).observe(e.parentElement, {
+					attributes: false,
+					childList: true,
+					subtree: true,
+				})
+
+				getBuyButton(e).click()
+			},
 		},
 	}
 
 	return (
 		<div>
-			{Object.keys(functions).map(key => {
-				const { disabled, onClick } = functions[key] || {}
+			{Object.keys(menu).map(key => {
+				const { disabled, onClick } = menu[key] || {}
 				return (
 					<button
-						href="/#"
 						onClick={onClick}
 						disabled={disabled}
 						style={buttonStyle}
