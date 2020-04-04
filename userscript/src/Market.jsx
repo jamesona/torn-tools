@@ -42,7 +42,7 @@ function Market() {
 				const { disabled, onClick } = menu[key] || {}
 				return (
 					<button
-						onClick={onClick}
+						onClick={() => onClick()}
 						disabled={disabled}
 						style={buttonStyle}
 					>
