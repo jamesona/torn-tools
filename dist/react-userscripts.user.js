@@ -1,7 +1,7 @@
 //==UserScript==
 //@name torn-tools
 //@namespace http://tampermonkey.net/
-//@version 0.5.0.14
+//@version 0.5.0.15
 //@description tools for http://torn.com
 //@author Jameson Aranda
 //@match https://www.torn.com
@@ -9269,8 +9269,9 @@ function _slicedToArray(arr, i) {
 // CONCATENATED MODULE: ./src/Market.jsx
 var marketItemSelector='.items .item';// const listItemElements = () =>
 // 	Array.from(document.querySelectorAll(marketItemSelector))
-var getTopItemElement=function getTopItemElement(){return document.querySelector(marketItemSelector);};var getBuyButton=function getBuyButton(e){return e.children[1];};var getConfirmButton=function getConfirmButton(e){return e.nextElementSibling.children[0].children[2];};function Market(){var functions=Object.values({'Buy Top Item':function BuyTopItem(){var e=getTopItemElement();// listen for changes on the market list, and fire a callback when the row is added
-new MutationObserver(function(_ref,observer){var _ref2=_slicedToArray(_ref,1),mutation=_ref2[0];observer.disconnect();setTimeout(function(){mutation.target.children[2].click();},100);}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();}});return react_default.a.createElement("div",null,functions.map(function(f){return react_default.a.createElement("span",{onClick:function onClick(){return f();}},f.name);}));}/* harmony default export */ var src_Market = (Market);
+var getTopItemElement=function getTopItemElement(){return document.querySelector(marketItemSelector);};var getBuyButton=function getBuyButton(e){return e.children[1];};// const getConfirmButton = e => e.nextElementSibling.children[0].children[2]
+var Market_buyTopItem=function buyTopItem(){var e=getTopItemElement();// listen for changes on the market list, and fire a callback when the row is added
+new MutationObserver(function(_ref,observer){var _ref2=_slicedToArray(_ref,1),mutation=_ref2[0];observer.disconnect();setTimeout(function(){mutation.target.children[2].click();},100);}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();};var buttonStyle={};function Market(){var functions={'Buy Top Item':{disabled:function disabled(){return!!getTopItemElement();},onClick:function onClick(){return Market_buyTopItem();}}};return react_default.a.createElement("div",null,Object.keys(functions).map(function(key){var _ref3=functions[key]||{},disabled=_ref3.disabled,onClick=_ref3.onClick;return react_default.a.createElement("button",{href:"/#",onClick:onClick,disabled:disabled,style:buttonStyle},key);}));}/* harmony default export */ var src_Market = (Market);
 // CONCATENATED MODULE: ./src/Faction.js
 function Faction(){return'faction';}/* harmony default export */ var src_Faction = (Faction);
 // CONCATENATED MODULE: ./src/Bazaar.js
