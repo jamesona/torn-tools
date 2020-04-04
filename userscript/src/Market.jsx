@@ -5,7 +5,7 @@ const listItemElements = () =>
 
 function Market() {
 	const functions = Object.values({
-		LogElements() {
+		'Log Elements'() {
 			listItemElements().forEach(console.log)
 		},
 	})
@@ -13,7 +13,15 @@ function Market() {
 	return (
 		<div>
 			{functions.map(f => (
-				<span onClick={() => f()}>{f.name}</span>
+				<span
+					onClick={() => {
+						console.log(f)
+						debugger
+						f()
+					}}
+				>
+					{f.name}
+				</span>
 			))}
 		</div>
 	)
