@@ -13,7 +13,7 @@ function Market() {
 	return (
 		<div>
 			{functions.map(f => (
-				<span onClick={() => f}>{f.name}</span>
+				<span onClick={() => f()}>{f.name}</span>
 			))}
 		</div>
 	)
