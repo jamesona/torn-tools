@@ -9208,45 +9208,17 @@ var react_dom = __webpack_require__(3);
 var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
 // CONCATENATED MODULE: ./src/utils.js
-/**
- * Wrapped console.log function.
- *
- * @export
- * @param {*} args
- */function log(){var _console;for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}(_console=console).log.apply(_console,['Userscript (React Mode):'].concat(args));}/**
- * Wrapped version of `fetch` that logs the output as it's being fetched.
- * It also specifies the full path, because in Greasemonkey, the full path is needed.
- *
- * @param {string} arg
- * @returns {Promise} - the `fetch` promise
- */function logFetch(arg){var url=new URL(arg,window.location);log('fetching',''+url);return fetch(''+url,{credentials:'include'});}/**
- * Ensure `callback` is called every time window.location changes
- * Code derived from https://stackoverflow.com/questions/3522090/event-when-window-location-href-changes
- *
- * @export
- * @param {function} callback - function to be called when URL changes
- * @returns {MutationObserver} - MutationObserver that watches the URL
- */function addLocationChangeCallback(callback){// Run the callback once right at the start
-window.setTimeout(callback,0);// Set up a `MutationObserver` to watch for changes in the URL
-var oldHref=window.location.href;var body=document.querySelector('body');var observer=new MutationObserver(function(mutations){if(mutations.some(function(){return oldHref!==document.location.href;})){oldHref=document.location.href;callback();}});observer.observe(body,{childList:true,subtree:true});return observer;}/**
- * Awaits for an element with the specified `selector` to be found
- * and then returns the selected dom node.
- * This is used to delay rendering a widget until its parent appears.
- *
- * @export
- * @param {string} selector
- * @returns {DOMNode}
- */function awaitElement(_x){return _awaitElement.apply(this,arguments);}function _awaitElement(){_awaitElement=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(selector){var MAX_TRIES,tries;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:MAX_TRIES=60;tries=0;return _context.abrupt("return",new Promise(function(resolve,reject){function probe(){tries++;return document.querySelector(selector);}function delayedProbe(){if(tries>=MAX_TRIES){log("Can't find element with selector",selector);reject();return;}var elm=probe();if(elm){resolve(elm);return;}window.setTimeout(delayedProbe,250);}delayedProbe();}));case 3:case"end":return _context.stop();}}},_callee);}));return _awaitElement.apply(this,arguments);}
-// CONCATENATED MODULE: ./src/Market.js
-function Market(){return'market';}/* harmony default export */ var src_Market = (Market);
+function log(){var _console;for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}(_console=console).log.apply(_console,['Userscript (React Mode):'].concat(args));}function logFetch(arg){var url=new URL(arg,window.location);log('fetching',''+url);return fetch(''+url,{credentials:'include'});}function addLocationChangeCallback(callback){window.setTimeout(callback,0);var oldHref=window.location.href;var body=document.querySelector('body');var observer=new MutationObserver(function(mutations){if(mutations.some(function(){return oldHref!==document.location.href;})){oldHref=document.location.href;callback();}});observer.observe(body,{childList:true,subtree:true});return observer;}function awaitElement(_x){return _awaitElement.apply(this,arguments);}function _awaitElement(){_awaitElement=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(selector){var MAX_TRIES,tries;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:MAX_TRIES=60;tries=0;return _context.abrupt("return",new Promise(function(resolve,reject){function probe(){tries++;return document.querySelector(selector);}function delayedProbe(){if(tries>=MAX_TRIES){log("Can't find element with selector",selector);reject();return;}var elm=probe();if(elm){resolve(elm);return;}window.setTimeout(delayedProbe,250);}delayedProbe();}));case 3:case"end":return _context.stop();}}},_callee);}));return _awaitElement.apply(this,arguments);}
+// CONCATENATED MODULE: ./src/Market.jsx
+var listItemElements=function listItemElements(){return Array.from(document.querySelectorAll('.items .item'));};function Market(){this.functions={LogElements:function LogElements(){listItemElements().forEach(console.log);}};return"<div>\n\t\t".concat(Object.values(this.functions).map(function(f){return"<a onClick={() => f}>{f.name}</a>";}).join(''),"\n\t</div>");}/* harmony default export */ var src_Market = (Market);
 // CONCATENATED MODULE: ./src/Faction.js
 function Faction(){return'faction';}/* harmony default export */ var src_Faction = (Faction);
 // CONCATENATED MODULE: ./src/Bazaar.js
 function Bazaar(){return'bazaar';}/* harmony default export */ var src_Bazaar = (Bazaar);
 // CONCATENATED MODULE: ./src/Toolbar.js
-var stickyWrapperStyle={position:'relative',height:'100%'};var toolbarStyle={position:'sticky',top:'0'};function Toolbar(){return react_default.a.createElement("div",{style:stickyWrapperStyle},react_default.a.createElement("div",{style:toolbarStyle},function(){switch(window.location.pathname){case'/imarket.php':return react_default.a.createElement(src_Market,null);case'/factions.php':return react_default.a.createElement(src_Faction,null);case'/bazaar.php':return react_default.a.createElement(src_Bazaar,null);default:return null;}}()));}/* harmony default export */ var src_Toolbar = (Toolbar);
+var stickyWrapperStyle={position:'relative',height:'100%'};var toolbarStyle={backgroundColor:'rgb(242, 242, 242)',width:'10rem',position:'sticky',top:'0',padding:'0.5rem',borderRadius:'0 5px 5px 0'};function Toolbar(){return react_default.a.createElement("div",{style:stickyWrapperStyle},react_default.a.createElement("div",{style:toolbarStyle},function(){switch(window.location.pathname){case'/imarket.php':return react_default.a.createElement(src_Market,null);case'/factions.php':return react_default.a.createElement(src_Faction,null);case'/bazaar.php':return react_default.a.createElement(src_Bazaar,null);default:return null;}}()));}/* harmony default export */ var src_Toolbar = (Toolbar);
 // CONCATENATED MODULE: ./src/index.js
-log('React script has successfully started');function main(){return _main.apply(this,arguments);}function _main(){_main=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var body,container;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return awaitElement('body');case 2:body=_context.sent;container=document.createElement('torn-tools');container.style.position='absolute';container.style.top='80px';container.style.height='100%';body.appendChild(container);react_dom_default.a.render(react_default.a.createElement(src_Toolbar,null),container);case 9:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}addLocationChangeCallback(function(){main().catch(function(e){log(e);});});
+log('React script has successfully started');function main(){return _main.apply(this,arguments);}function _main(){_main=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var body,container;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return awaitElement('body');case 2:body=_context.sent;container=document.createElement('torn-tools');container.style.position='absolute';container.style.top='73px';container.style.height='100%';body.appendChild(container);react_dom_default.a.render(react_default.a.createElement(src_Toolbar,null),container);case 9:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}addLocationChangeCallback(function(){main().catch(function(e){log(e);});});
 
 /***/ })
 /******/ ]);

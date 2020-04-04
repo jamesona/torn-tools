@@ -11,7 +11,7 @@ async function main() {
 
 	const container = document.createElement('torn-tools')
 	container.style.position = 'absolute'
-	container.style.top = '80px'
+	container.style.top = '73px'
 	container.style.height = '100%'
 	body.appendChild(container)
 
