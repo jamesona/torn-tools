@@ -18,7 +18,9 @@ function Market() {
 			// listen for changes on the market list, and fire a callback when the row is added
 			new MutationObserver(([mutation], { disconnect }) => {
 				disconnect()
-				mutation.target.children[2].click()
+				setTimeout(() => {
+					mutation.target.children[2].click()
+				}, 100)
 			}).observe(e.parentElement, {
 				attributes: false,
 				childList: true,

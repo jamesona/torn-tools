@@ -1,7 +1,7 @@
 //==UserScript==
 //@name torn-tools
 //@namespace http://tampermonkey.net/
-//@version 0.5.0.12
+//@version 0.5.0.13
 //@description tools for http://torn.com
 //@author Jameson Aranda
 //@match https://www.torn.com
@@ -9270,7 +9270,7 @@ function _slicedToArray(arr, i) {
 var marketItemSelector='.items .item';// const listItemElements = () =>
 // 	Array.from(document.querySelectorAll(marketItemSelector))
 var getTopItemElement=function getTopItemElement(){return document.querySelector(marketItemSelector);};var getBuyButton=function getBuyButton(e){return e.children[1];};var getConfirmButton=function getConfirmButton(e){return e.nextElementSibling.children[0].children[2];};function Market(){var functions=Object.values({'Buy Top Item':function BuyTopItem(){var e=getTopItemElement();// listen for changes on the market list, and fire a callback when the row is added
-new MutationObserver(function(_ref,_ref2){var _ref3=_slicedToArray(_ref,1),mutation=_ref3[0];var disconnect=_ref2.disconnect;disconnect();mutation.target.children[2].click();}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();}});return react_default.a.createElement("div",null,functions.map(function(f){return react_default.a.createElement("span",{onClick:function onClick(){return f();}},f.name);}));}/* harmony default export */ var src_Market = (Market);
+new MutationObserver(function(_ref,_ref2){var _ref3=_slicedToArray(_ref,1),mutation=_ref3[0];var disconnect=_ref2.disconnect;disconnect();setTimeout(function(){mutation.target.children[2].click();},100);}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();}});return react_default.a.createElement("div",null,functions.map(function(f){return react_default.a.createElement("span",{onClick:function onClick(){return f();}},f.name);}));}/* harmony default export */ var src_Market = (Market);
 // CONCATENATED MODULE: ./src/Faction.js
 function Faction(){return'faction';}/* harmony default export */ var src_Faction = (Faction);
 // CONCATENATED MODULE: ./src/Bazaar.js
