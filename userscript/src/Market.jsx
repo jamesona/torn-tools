@@ -16,10 +16,10 @@ function Market() {
 		'Buy Top Item': {
 			disabled: () => !!getTopItemElement(),
 			onClick: () => {
-				debugger
 				const e = getTopItemElement()
 
-				// listen for changes on the market list, and fire a callback when the row is added
+				// listen for changes on the market list,
+				// fire a callback when the confirmation row is added
 				new MutationObserver(([mutation], observer) => {
 					observer.disconnect()
 					setTimeout(() => {
