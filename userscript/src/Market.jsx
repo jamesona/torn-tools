@@ -15,7 +15,7 @@ function Market() {
 	const menu = {
 		'Buy Top Item': {
 			disabled: () => !!getTopItemElement(),
-			onClick: () => () => {
+			onClick: () => {
 				debugger
 				const e = getTopItemElement()
 
