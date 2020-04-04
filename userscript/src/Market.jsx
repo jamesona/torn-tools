@@ -33,7 +33,7 @@ function Market() {
 	const menu = {
 		'Buy Top Item': {
 			disabled: () => !!getTopItemElement(),
-			onClick: buyTopItem,
+			onClick: () => buyTopItem(),
 		},
 	}
 
