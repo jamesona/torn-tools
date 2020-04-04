@@ -11,9 +11,9 @@ function Market() {
 				LogElements() {
 					listItemElements().forEach(console.log)
 				},
-			})
-				.map(f => `<a onClick={() => f}>{f.name}</a>`)
-				.join('')}
+			}).map(f => (
+				<span onClick={() => f}>{f.name}</span>
+			))}
 		</div>
 	)
 }
