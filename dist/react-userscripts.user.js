@@ -1,7 +1,7 @@
 //==UserScript==
 //@name torn-tools
 //@namespace http://tampermonkey.net/
-//@version 0.5.0.11
+//@version 0.5.0.12
 //@description tools for http://torn.com
 //@author Jameson Aranda
 //@match https://www.torn.com
@@ -9221,8 +9221,56 @@ var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
 // CONCATENATED MODULE: ./src/utils.js
 function log(){var _console;for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}(_console=console).log.apply(_console,['Userscript (React Mode):'].concat(args));}function logFetch(arg){var url=new URL(arg,window.location);log('fetching',''+url);return fetch(''+url,{credentials:'include'});}function addLocationChangeCallback(callback){window.setTimeout(callback,0);var oldHref=window.location.href;var body=document.querySelector('body');var observer=new MutationObserver(function(mutations){if(mutations.some(function(){return oldHref!==document.location.href;})){oldHref=document.location.href;callback();}});observer.observe(body,{childList:true,subtree:true});return observer;}function awaitElement(_x){return _awaitElement.apply(this,arguments);}function _awaitElement(){_awaitElement=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(selector){var MAX_TRIES,tries;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:MAX_TRIES=60;tries=0;return _context.abrupt("return",new Promise(function(resolve,reject){function probe(){tries++;return document.querySelector(selector);}function delayedProbe(){if(tries>=MAX_TRIES){log("Can't find element with selector",selector);reject();return;}var elm=probe();if(elm){resolve(elm);return;}window.setTimeout(delayedProbe,250);}delayedProbe();}));case 3:case"end":return _context.stop();}}},_callee);}));return _awaitElement.apply(this,arguments);}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
+function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/slicedToArray.js
+
+
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
 // CONCATENATED MODULE: ./src/Market.jsx
-var listItemElements=function listItemElements(){return Array.from(document.querySelectorAll('.items .item'));};function Market(){var functions=Object.values({'Log Elements':function LogElements(){listItemElements().forEach(console.log);}});return react_default.a.createElement("div",null,functions.map(function(f){return react_default.a.createElement("span",{onClick:function onClick(){console.log(f);debugger;f();}},f.name);}));}/* harmony default export */ var src_Market = (Market);
+var marketItemSelector='.items .item';// const listItemElements = () =>
+// 	Array.from(document.querySelectorAll(marketItemSelector))
+var getTopItemElement=function getTopItemElement(){return document.querySelector(marketItemSelector);};var getBuyButton=function getBuyButton(e){return e.children[1];};var getConfirmButton=function getConfirmButton(e){return e.nextElementSibling.children[0].children[2];};function Market(){var functions=Object.values({'Buy Top Item':function BuyTopItem(){var e=getTopItemElement();// listen for changes on the market list, and fire a callback when the row is added
+new MutationObserver(function(_ref,_ref2){var _ref3=_slicedToArray(_ref,1),mutation=_ref3[0];var disconnect=_ref2.disconnect;disconnect();mutation.target.children[2].click();}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();}});return react_default.a.createElement("div",null,functions.map(function(f){return react_default.a.createElement("span",{onClick:function onClick(){return f();}},f.name);}));}/* harmony default export */ var src_Market = (Market);
 // CONCATENATED MODULE: ./src/Faction.js
 function Faction(){return'faction';}/* harmony default export */ var src_Faction = (Faction);
 // CONCATENATED MODULE: ./src/Bazaar.js
