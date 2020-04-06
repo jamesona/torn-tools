@@ -45,6 +45,7 @@ const buyAllItems = callback => {
 
 	const buyNextItem = () => {
 		const { value: item, done } = items.next()
+		console.log(done, item)
 
 		if (item) {
 			buyItem(item, done ? callback : buyNextItem)
