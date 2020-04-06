@@ -10,13 +10,14 @@ const getTopItemElement = () => document.querySelector(marketItemSelector)
 const getBuyButton = e => e.children[1]
 // const getConfirmButton = e => e.nextElementSibling.children[0].children[2]
 const buyTopItem = () => {
-	debugger
 	const e = getTopItemElement()
 
 	// listen for changes on the market list, and fire a callback when the row is added
 	new MutationObserver(([mutation], observer) => {
 		observer.disconnect()
-		mutation.target.children[2].click()
+		setTimeout(() => {
+			mutation.target.children[2].click()
+		}, 100)
 	}).observe(e.parentElement, {
 		attributes: false,
 		childList: true,
@@ -26,36 +27,16 @@ const buyTopItem = () => {
 	getBuyButton(e).click()
 }
 
-const buttonStyle = {}
-
 function Market() {
 	const functions = {
-		'Buy Top Item': {
-			disabled: () => !!getTopItemElement(),
-			onClick: () => {
-				debugger
-				buyTopItem()
-			},
-		},
+		'Buy Top Item': buyTopItem,
 	}
 
 	return (
 		<div>
-			{Object.keys(functions).map(key => {
-				const { disabled } = functions[key] || {}
-
-				return (
-					<button
-						onClick={() => {
-							console.log(key)
-						}}
-						disabled={disabled}
-						style={buttonStyle}
-					>
-						{key}
-					</button>
-				)
-			})}
+			{Object.keys(functions).map(key => (
+				<span onClick={() => functions[key]()}>{key}</span>
+			))}
 		</div>
 	)
 }
