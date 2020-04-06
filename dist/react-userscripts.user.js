@@ -1,7 +1,7 @@
 //==UserScript==
 //@name torn-tools
 //@namespace http://tampermonkey.net/
-//@version 0.5.0.38
+//@version 0.5.0.39
 //@description tools for http://torn.com
 //@author Jameson Aranda
 //@match https://www.torn.com
@@ -9266,8 +9266,59 @@ function _nonIterableRest() {
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
 }
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/defineProperty.js
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
+
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
 // CONCATENATED MODULE: ./src/Menu.jsx
-var Menu_buttonOrNull=function buttonOrNull(item){return item.visible?react_default.a.createElement("button",{onClick:function onClick(){return item.onClick();}},item.text):null;};var menuStyle={padding:'0.5rem',backgroundColor:'rgb(242, 242, 242)',width:'10rem',borderRadius:'0 5px 5px 0'};function Menu(){var _ref=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{},items=_ref.items;var menuItems=items||[];return menuItems.length?react_default.a.createElement("div",{style:menuStyle},menuItems.map(Menu_buttonOrNull)):null;}/* harmony default export */ var src_Menu = (Menu);
+var Menu_appendVisibility=function appendVisibility(items){return items.map(function(item){return _objectSpread2({},item,{visible:typeof item.visible==='undefined'||typeof item.visible==='function'&&item.visible||!!item.visible});});};var Menu_buttonOrNull=function buttonOrNull(item){return item.visible?react_default.a.createElement("button",{onClick:function onClick(){return item.onClick();},disabled:item.disabled},item.text):null;};var menuStyle={padding:'0.5rem',backgroundColor:'rgb(242, 242, 242)',width:'10rem',borderRadius:'0 5px 5px 0'};function Menu(){var _ref=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{},items=_ref.items;var menuItems=Menu_appendVisibility(items||[]);return menuItems.some(function(item){return item.visible;})?react_default.a.createElement("div",{style:menuStyle},menuItems.map(Menu_buttonOrNull)):null;}/* harmony default export */ var src_Menu = (Menu);
 // CONCATENATED MODULE: ./src/Market.jsx
 var marketItemSelector='.item-market-search-wrap > .items-list > .items .item';// const listItemElements = () =>
 // 	Array.from(document.querySelectorAll(marketItemSelector))
