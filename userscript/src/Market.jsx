@@ -40,14 +40,17 @@ const buyTopItem = callback => {
 	buyItem(getTopItemElement())
 }
 
-const buyAllItems = () => {
+const buyAllItems = callback => {
 	const items = makeListItemIterator()
 
 	const buyNextItem = () => {
 		const { value: item, done } = items.next()
-		const callback = done ? undefined : buyNextItem
-		debugger
-		buyItem(item, callback)
+
+		if (item) {
+			buyItem(item, done ? callback : buyNextItem)
+		} else if (callback && typeof callback === 'function') {
+			callback()
+		}
 	}
 
 	buyNextItem()
