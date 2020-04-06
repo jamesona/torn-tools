@@ -1,6 +1,7 @@
 import React from 'react'
 
-const marketItemSelector = '.items .item'
+const marketItemSelector =
+	'.item-market-search-wrap > .items-list > .items .item'
 
 // const listItemElements = () =>
 // 	Array.from(document.querySelectorAll(marketItemSelector))
@@ -40,7 +41,7 @@ function Market() {
 				const { disabled, onClick } = functions[key] || {}
 				return (
 					<button
-						onClick={onClick}
+						onClick={() => onClick()}
 						disabled={disabled}
 						style={buttonStyle}
 					>

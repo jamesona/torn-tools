@@ -3,7 +3,7 @@
     "main.js": "/static/js/main.js",
     "main.js.map": "/static/js/main.js.map",
     "index.html": "/index.html",
-    "precache-manifest.6d5f24903ee9fa8023e39b9409f75565.js": "/precache-manifest.6d5f24903ee9fa8023e39b9409f75565.js",
+    "precache-manifest.0c96c4402d8935bf13bd42a2b0a1d7eb.js": "/precache-manifest.0c96c4402d8935bf13bd42a2b0a1d7eb.js",
     "service-worker.js": "/service-worker.js"
   },
   "entrypoints": [
