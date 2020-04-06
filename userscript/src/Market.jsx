@@ -22,10 +22,14 @@ const getBuyButton = e => e.children[1]
 const buyItem = (e, callback) => {
 	// listen for changes on the market list,
 	// and fire a callback when the row is added
-	new MutationObserver(([mutation], observer) => {
+	new MutationObserver(([{ target: messageRow }], observer) => {
 		observer.disconnect()
 		setTimeout(() => {
-			mutation.target.children[2].click()
+			if (messageRow.innerText.includes('Are you sure you want to buy')) {
+				messageRow.children[2].click()
+			} else {
+				debugger
+			}
 			if (callback && typeof callback === 'function') {
 				setTimeout(callback)
 			}
