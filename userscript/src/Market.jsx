@@ -10,6 +10,7 @@ const getTopItemElement = () => document.querySelector(marketItemSelector)
 const getBuyButton = e => e.children[1]
 // const getConfirmButton = e => e.nextElementSibling.children[0].children[2]
 const buyTopItem = () => {
+	debugger
 	const e = getTopItemElement()
 
 	// listen for changes on the market list, and fire a callback when the row is added
@@ -31,7 +32,10 @@ function Market() {
 	const functions = {
 		'Buy Top Item': {
 			disabled: () => !!getTopItemElement(),
-			onClick: () => buyTopItem(),
+			onClick: () => {
+				debugger
+				buyTopItem()
+			},
 		},
 	}
 
@@ -41,7 +45,10 @@ function Market() {
 				const { disabled, onClick } = functions[key] || {}
 				return (
 					<button
-						onClick={() => onClick()}
+						onClick={() => {
+							debugger
+							onClick()
+						}}
 						disabled={disabled}
 						style={buttonStyle}
 					>
