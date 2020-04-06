@@ -28,14 +28,12 @@ const buyTopItem = () => {
 }
 
 function Market() {
-	const functions = {
-		'Buy Top Item': buyTopItem,
-	}
+	const menuItems = [{ text: 'Buy Top Item', onClick: buyTopItem }]
 
 	return (
 		<div>
-			{Object.keys(functions).map(key => (
-				<span onClick={() => functions[key]()}>{key}</span>
+			{menuItems.map(item => (
+				<span onClick={() => item.onClick()}>{item.text}</span>
 			))}
 		</div>
 	)
