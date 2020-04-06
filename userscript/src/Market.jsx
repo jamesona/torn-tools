@@ -38,7 +38,7 @@ const appendVisibility = items =>
 
 const buttonOrNull = item =>
 	item.visible ? (
-		<span onClick={() => item.onClick()}>{item.text}</span>
+		<button onClick={() => item.onClick()}>{item.text}</button>
 	) : null
 
 function Market() {

@@ -1,7 +1,7 @@
 //==UserScript==
 //@name torn-tools
 //@namespace http://tampermonkey.net/
-//@version 0.5.0.33
+//@version 0.5.0.34
 //@description tools for http://torn.com
 //@author Jameson Aranda
 //@match https://www.torn.com
@@ -9322,7 +9322,7 @@ var marketItemSelector='.item-market-search-wrap > .items-list > .items .item';/
 // 	Array.from(document.querySelectorAll(marketItemSelector))
 var getTopItemElement=function getTopItemElement(){return document.querySelector(marketItemSelector);};var getBuyButton=function getBuyButton(e){return e.children[1];};// const getConfirmButton = e => e.nextElementSibling.children[0].children[2]
 var Market_buyTopItem=function buyTopItem(){var e=getTopItemElement();// listen for changes on the market list, and fire a callback when the row is added
-new MutationObserver(function(_ref,observer){var _ref2=_slicedToArray(_ref,1),mutation=_ref2[0];observer.disconnect();setTimeout(function(){mutation.target.children[2].click();},100);}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();};var Market_appendVisibility=function appendVisibility(items){return items.map(function(item){return _objectSpread2({},item,{visible:typeof item.visible==='undefined'||typeof item.visible==='function'&&item.visible||!!item.visible});});};var Market_buttonOrNull=function buttonOrNull(item){return item.visible?react_default.a.createElement("span",{onClick:function onClick(){return item.onClick();}},item.text):null;};function Market(){var menuItems=Market_appendVisibility([{text:'Buy Top Item',onClick:Market_buyTopItem}]);return menuItems.some(function(item){return item.visible;})?react_default.a.createElement("div",null,menuItems.map(Market_buttonOrNull)):null;}/* harmony default export */ var src_Market = (Market);
+new MutationObserver(function(_ref,observer){var _ref2=_slicedToArray(_ref,1),mutation=_ref2[0];observer.disconnect();setTimeout(function(){mutation.target.children[2].click();},100);}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();};var Market_appendVisibility=function appendVisibility(items){return items.map(function(item){return _objectSpread2({},item,{visible:typeof item.visible==='undefined'||typeof item.visible==='function'&&item.visible||!!item.visible});});};var Market_buttonOrNull=function buttonOrNull(item){return item.visible?react_default.a.createElement("button",{onClick:function onClick(){return item.onClick();}},item.text):null;};function Market(){var menuItems=Market_appendVisibility([{text:'Buy Top Item',onClick:Market_buyTopItem}]);return menuItems.some(function(item){return item.visible;})?react_default.a.createElement("div",null,menuItems.map(Market_buttonOrNull)):null;}/* harmony default export */ var src_Market = (Market);
 // CONCATENATED MODULE: ./src/Faction.js
 function Faction(){return'faction';}/* harmony default export */ var src_Faction = (Faction);
 // CONCATENATED MODULE: ./src/Bazaar.js
