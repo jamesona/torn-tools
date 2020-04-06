@@ -20,13 +20,16 @@ const getTopItemElement = () => document.querySelector(marketItemSelector)
 const getBuyButton = e => e.children[1]
 
 const buyItem = (e, callback) => {
-	// listen for changes on the market list, and fire a callback when the row is added
+	// listen for changes on the market list,
+	// and fire a callback when the row is added
 	new MutationObserver(([mutation], observer) => {
 		observer.disconnect()
-		mutation.target.children[2].click()
-		if (callback && typeof callback === 'function') {
-			setTimeout(callback)
-		}
+		setTimeout(() => {
+			mutation.target.children[2].click()
+			if (callback && typeof callback === 'function') {
+				setTimeout(callback)
+			}
+		})
 	}).observe(e.parentElement, {
 		attributes: false,
 		childList: true,
@@ -37,7 +40,7 @@ const buyItem = (e, callback) => {
 }
 
 const buyTopItem = callback => {
-	buyItem(getTopItemElement())
+	buyItem(getTopItemElement(), callback)
 }
 
 const buyAllItems = callback => {
