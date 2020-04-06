@@ -42,13 +42,13 @@ function Market() {
 	return (
 		<div>
 			{Object.keys(functions).map(key => {
-				const { disabled, onClick } = functions[key] || {}
+				const { disabled } = functions[key] || {}
+				const onclick = () => {
+					debugger
+				}
 				return (
 					<button
-						onClick={() => {
-							debugger
-							onClick()
-						}}
+						onClick={onclick}
 						disabled={disabled}
 						style={buttonStyle}
 					>
