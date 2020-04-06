@@ -29,7 +29,15 @@ const buyTopItem = () => {
 }
 
 function Market() {
-	const menuItems = [{ text: 'Buy Top Item', onClick: buyTopItem }]
+	const menuItems = [
+		{
+			text: 'Buy Top Item',
+			onClick: buyTopItem,
+			get visible() {
+				return !!getTopItemElement()
+			},
+		},
+	]
 
 	return <Menu items={menuItems} />
 }
