@@ -75,7 +75,10 @@ const buyAllItems = callback => {
 function Market() {
 	const menuItems = [
 		{ text: 'Buy Top Item', onClick: buyTopItem },
-		{ text: 'Buy All Items', onClick: buyAllItems },
+		{
+			text: 'Buy All Items',
+			onClick: () => buyAllItems(window.location.reload),
+		},
 	]
 
 	return <Menu items={menuItems} />
