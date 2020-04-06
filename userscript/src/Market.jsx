@@ -60,7 +60,6 @@ const buyAllItems = callback => {
 
 	const buyNextItem = () => {
 		const { value: item, done } = items.next()
-		console.log(done, item)
 
 		if (item) {
 			buyItem(item, done ? callback : buyNextItem)
@@ -77,7 +76,7 @@ function Market() {
 		{ text: 'Buy Top Item', onClick: buyTopItem },
 		{
 			text: 'Buy All Items',
-			onClick: () => buyAllItems(window.location.reload),
+			onClick: () => buyAllItems(() => window.location.reload()),
 		},
 	]
 
