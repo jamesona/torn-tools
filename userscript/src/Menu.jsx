@@ -2,9 +2,7 @@ import React from 'react'
 
 const buttonOrNull = item =>
 	item.visible ? (
-		<button onClick={() => item.onClick()} disabled={item.disabled}>
-			{item.text}
-		</button>
+		<button onClick={() => item.onClick()}>{item.text}</button>
 	) : null
 
 const menuStyle = {
