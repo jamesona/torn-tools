@@ -14,14 +14,7 @@ const menuStyle = {
 	borderRadius: '0 5px 5px 0',
 }
 function Menu({ items } = {}) {
-	const menuItems =
-		(items || []) &&
-		items.filter(
-			item =>
-				typeof item.visible === 'undefined' ||
-				(typeof item.visible === 'function' && item.visible) ||
-				!!item.visible
-		)
+	const menuItems = items || []
 
 	return menuItems.length ? (
 		<div style={menuStyle}>{menuItems.map(buttonOrNull)}</div>

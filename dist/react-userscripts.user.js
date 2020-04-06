@@ -1,7 +1,7 @@
 //==UserScript==
 //@name torn-tools
 //@namespace http://tampermonkey.net/
-//@version 0.5.0.36
+//@version 0.5.0.37
 //@description tools for http://torn.com
 //@author Jameson Aranda
 //@match https://www.torn.com
@@ -9267,13 +9267,13 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
 }
 // CONCATENATED MODULE: ./src/Menu.jsx
-var Menu_buttonOrNull=function buttonOrNull(item){return item.visible?react_default.a.createElement("button",{onClick:function onClick(){return item.onClick();},disabled:item.disabled},item.text):null;};var menuStyle={padding:'0.5rem',backgroundColor:'rgb(242, 242, 242)',width:'10rem',borderRadius:'0 5px 5px 0'};function Menu(){var _ref=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{},items=_ref.items;var menuItems=(items||[])&&items.filter(function(item){return typeof item.visible==='undefined'||typeof item.visible==='function'&&item.visible||!!item.visible;});return menuItems.length?react_default.a.createElement("div",{style:menuStyle},menuItems.map(Menu_buttonOrNull)):null;}/* harmony default export */ var src_Menu = (Menu);
+var Menu_buttonOrNull=function buttonOrNull(item){return item.visible?react_default.a.createElement("button",{onClick:function onClick(){return item.onClick();},disabled:item.disabled},item.text):null;};var menuStyle={padding:'0.5rem',backgroundColor:'rgb(242, 242, 242)',width:'10rem',borderRadius:'0 5px 5px 0'};function Menu(){var _ref=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{},items=_ref.items;var menuItems=items||[];return menuItems.length?react_default.a.createElement("div",{style:menuStyle},menuItems.map(Menu_buttonOrNull)):null;}/* harmony default export */ var src_Menu = (Menu);
 // CONCATENATED MODULE: ./src/Market.jsx
 var marketItemSelector='.item-market-search-wrap > .items-list > .items .item';// const listItemElements = () =>
 // 	Array.from(document.querySelectorAll(marketItemSelector))
 var getTopItemElement=function getTopItemElement(){return document.querySelector(marketItemSelector);};var getBuyButton=function getBuyButton(e){return e.children[1];};// const getConfirmButton = e => e.nextElementSibling.children[0].children[2]
 var Market_buyTopItem=function buyTopItem(){var e=getTopItemElement();// listen for changes on the market list, and fire a callback when the row is added
-new MutationObserver(function(_ref,observer){var _ref2=_slicedToArray(_ref,1),mutation=_ref2[0];observer.disconnect();setTimeout(function(){mutation.target.children[2].click();},100);}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();};function Market(){var menuItems=[{text:'Buy Top Item',onClick:Market_buyTopItem,get visible(){return!!getTopItemElement();}}];return react_default.a.createElement(src_Menu,{items:menuItems});}/* harmony default export */ var src_Market = (Market);
+new MutationObserver(function(_ref,observer){var _ref2=_slicedToArray(_ref,1),mutation=_ref2[0];observer.disconnect();setTimeout(function(){mutation.target.children[2].click();},100);}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();};function Market(){var menuItems=[{text:'Buy Top Item',onClick:Market_buyTopItem}];return react_default.a.createElement(src_Menu,{items:menuItems});}/* harmony default export */ var src_Market = (Market);
 // CONCATENATED MODULE: ./src/Faction.js
 function Faction(){return'faction';}/* harmony default export */ var src_Faction = (Faction);
 // CONCATENATED MODULE: ./src/Bazaar.js
