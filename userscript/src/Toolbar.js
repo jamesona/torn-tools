@@ -4,42 +4,50 @@ import Market from './Market'
 import Faction from './Faction'
 import Bazaar from './Bazaar'
 
+const stickyWrapperStyle = {
+	position: 'relative',
+	height: '100%',
+}
+
+const toolbarStyle = {
+	position: 'sticky',
+	top: '0',
+	padding: '0.5rem',
+}
+
+const menuStyle = {
+	backgroundColor: 'rgb(242, 242, 242)',
+	width: '10rem',
+	borderRadius: '0 5px 5px 0',
+}
 function Toolbar() {
 	return (
-		<div>
-			<style>{`
-			.sticky-parent {
-				position: relative;
-				height: 100%;
-			}
-
-			.sticky-parent > .sticky-child {
-				position: sticky;
-				top: 0;
-				padding: 0.5rem;
-			}
-
-			.menu {
-				background-color: rgb(242, 242, 242);
-				width: 10rem;
-				border-radius: 0 5px 5px 0;
-			}
-		`}</style>
-			<div class="sticky-parent">
-				<div class="sticky-child">
-					{(() => {
-						switch (window.location.pathname) {
-							case '/imarket.php':
-								return <Market class="menu" />
-							case '/factions.php':
-								return <Faction class="menu" />
-							case '/bazaar.php':
-								return <Bazaar class="menu" />
-							default:
-								return null
-						}
-					})()}
-				</div>
+		<div style={stickyWrapperStyle}>
+			<div style={toolbarStyle}>
+				{(() => {
+					switch (window.location.pathname) {
+						case '/imarket.php':
+							return (
+								<div style={menuStyle}>
+									<Market />
+								</div>
+							)
+						case '/factions.php':
+							return (
+								<div style={menuStyle}>
+									<Faction />
+								</div>
+							)
+						case '/bazaar.php':
+							return (
+								<div style={menuStyle}>
+									<Bazaar />
+								</div>
+							)
+						default:
+							return null
+					}
+				})()}
 			</div>
 		</div>
 	)
