@@ -27,9 +27,16 @@ const buyItem = (e, callback) => {
 		setTimeout(() => {
 			if (messageRow.innerText.includes('Are you sure you want to buy')) {
 				messageRow.children[2].click()
+			} else if (
+				messageRow.innerText.includes(
+					'This item has already been purchased'
+				)
+			) {
+				messageRow.nextElementSibling.click()
 			} else {
 				debugger
 			}
+
 			if (callback && typeof callback === 'function') {
 				setTimeout(callback)
 			}
