@@ -28,9 +28,10 @@ const buyItem = (e, callback) => {
 			if (messageRow.innerText.includes('Are you sure you want to buy')) {
 				messageRow.children[2].click()
 			} else if (
-				messageRow.innerText.includes(
-					'This item has already been purchased'
-				)
+				[
+					'Oh sorry! It looks like someone else just bought that item!',
+					'This item has already been purchased by someone!',
+				].includes(messageRow.innerText)
 			) {
 				messageRow.nextElementSibling.click()
 			} else {
