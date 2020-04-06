@@ -27,16 +27,28 @@ const buyTopItem = () => {
 	getBuyButton(e).click()
 }
 
-function Market() {
-	const menuItems = [{ text: 'Buy Top Item', onClick: buyTopItem }]
+const appendVisibility = items =>
+	items.map(item => ({
+		...item,
+		visible:
+			typeof item.visible === 'undefined' ||
+			(typeof item.visible === 'function' && item.visible) ||
+			!!item.visible,
+	}))
 
-	return (
-		<div>
-			{menuItems.map(item => (
-				<span onClick={() => item.onClick()}>{item.text}</span>
-			))}
-		</div>
-	)
+const buttonOrNull = item =>
+	item.visible ? (
+		<span onClick={() => item.onClick()}>{item.text}</span>
+	) : null
+
+function Market() {
+	const menuItems = appendVisibility([
+		{ text: 'Buy Top Item', onClick: buyTopItem },
+	])
+
+	return menuItems.some(item => item.visible) ? (
+		<div>{menuItems.map(buttonOrNull)}</div>
+	) : null
 }
 
 export default Market
