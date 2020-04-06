@@ -14,9 +14,7 @@ const buyTopItem = () => {
 	// listen for changes on the market list, and fire a callback when the row is added
 	new MutationObserver(([mutation], observer) => {
 		observer.disconnect()
-		setTimeout(() => {
-			mutation.target.children[2].click()
-		}, 100)
+		mutation.target.children[2].click()
 	}).observe(e.parentElement, {
 		attributes: false,
 		childList: true,

@@ -12,10 +12,10 @@ const stickyWrapperStyle = {
 const toolbarStyle = {
 	position: 'sticky',
 	top: '0',
-	padding: '0.5rem',
 }
 
 const menuStyle = {
+	padding: '0.5rem',
 	backgroundColor: 'rgb(242, 242, 242)',
 	width: '10rem',
 	borderRadius: '0 5px 5px 0',
