@@ -1,7 +1,7 @@
 //==UserScript==
 //@name torn-tools
 //@namespace http://tampermonkey.net/
-//@version 0.5.0.23
+//@version 0.5.0.24
 //@description tools for http://torn.com
 //@author Jameson Aranda
 //@match https://www.torn.com
@@ -9277,7 +9277,7 @@ function Faction(){return'faction';}/* harmony default export */ var src_Faction
 // CONCATENATED MODULE: ./src/Bazaar.js
 function Bazaar(){return'bazaar';}/* harmony default export */ var src_Bazaar = (Bazaar);
 // CONCATENATED MODULE: ./src/Toolbar.js
-var stickyWrapperStyle={position:'relative',height:'100%'};var toolbarStyle={backgroundColor:'rgb(242, 242, 242)',width:'10rem',position:'sticky',top:'0',padding:'0.5rem',borderRadius:'0 5px 5px 0'};function Toolbar(){return react_default.a.createElement("div",{style:stickyWrapperStyle},react_default.a.createElement("div",{style:toolbarStyle},function(){switch(window.location.pathname){case'/imarket.php':return react_default.a.createElement(src_Market,null);case'/factions.php':return react_default.a.createElement(src_Faction,null);case'/bazaar.php':return react_default.a.createElement(src_Bazaar,null);default:return null;}}()));}/* harmony default export */ var src_Toolbar = (Toolbar);
+function Toolbar(){return react_default.a.createElement("div",null,react_default.a.createElement("style",null,"\n\t\t\t.sticky-parent {\n\t\t\t\tposition: relative;\n\t\t\t\theight: 100%;\n\t\t\t}\n\n\t\t\t.sticky-parent > .sticky-child {\n\t\t\t\tposition: sticky;\n\t\t\t\ttop: 0;\n\t\t\t\tpadding: 0.5rem;\n\t\t\t}\n\n\t\t\t.menu {\n\t\t\t\tbackground-color: rgb(242, 242, 242);\n\t\t\t\twidth: 10rem;\n\t\t\t\tborder-radius: 0 5px 5px 0;\n\t\t\t}\n\t\t"),react_default.a.createElement("div",{class:"sticky-parent"},react_default.a.createElement("div",{class:"sticky-child"},function(){switch(window.location.pathname){case'/imarket.php':return react_default.a.createElement(src_Market,{class:"menu"});case'/factions.php':return react_default.a.createElement(src_Faction,{class:"menu"});case'/bazaar.php':return react_default.a.createElement(src_Bazaar,{class:"menu"});default:return null;}}())));}/* harmony default export */ var src_Toolbar = (Toolbar);
 // CONCATENATED MODULE: ./src/index.js
 log('React script has successfully started');function main(){return _main.apply(this,arguments);}function _main(){_main=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var body,container;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return awaitElement('body');case 2:body=_context.sent;container=document.createElement('torn-tools');container.style.position='absolute';container.style.top='73px';container.style.height='100%';body.appendChild(container);react_dom_default.a.render(react_default.a.createElement(src_Toolbar,null),container);case 9:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}addLocationChangeCallback(function(){main().catch(function(e){log(e);});});
 
