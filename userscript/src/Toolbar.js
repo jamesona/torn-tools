@@ -13,13 +13,6 @@ const toolbarStyle = {
 	position: 'sticky',
 	top: '0',
 }
-
-const menuStyle = {
-	padding: '0.5rem',
-	backgroundColor: 'rgb(242, 242, 242)',
-	width: '10rem',
-	borderRadius: '0 5px 5px 0',
-}
 function Toolbar() {
 	return (
 		<div style={stickyWrapperStyle}>
@@ -27,23 +20,11 @@ function Toolbar() {
 				{(() => {
 					switch (window.location.pathname) {
 						case '/imarket.php':
-							return (
-								<div style={menuStyle}>
-									<Market />
-								</div>
-							)
+							return <Market />
 						case '/factions.php':
-							return (
-								<div style={menuStyle}>
-									<Faction />
-								</div>
-							)
+							return <Faction />
 						case '/bazaar.php':
-							return (
-								<div style={menuStyle}>
-									<Bazaar />
-								</div>
-							)
+							return <Bazaar />
 						default:
 							return null
 					}

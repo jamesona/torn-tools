@@ -1,4 +1,5 @@
 import React from 'react'
+import Menu from './Menu'
 
 const marketItemSelector =
 	'.item-market-search-wrap > .items-list > .items .item'
@@ -27,28 +28,10 @@ const buyTopItem = () => {
 	getBuyButton(e).click()
 }
 
-const appendVisibility = items =>
-	items.map(item => ({
-		...item,
-		visible:
-			typeof item.visible === 'undefined' ||
-			(typeof item.visible === 'function' && item.visible) ||
-			!!item.visible,
-	}))
-
-const buttonOrNull = item =>
-	item.visible ? (
-		<button onClick={() => item.onClick()}>{item.text}</button>
-	) : null
-
 function Market() {
-	const menuItems = appendVisibility([
-		{ text: 'Buy Top Item', onClick: buyTopItem },
-	])
+	const menuItems = [{ text: 'Buy Top Item', onClick: buyTopItem }]
 
-	return menuItems.some(item => item.visible) ? (
-		<div>{menuItems.map(buttonOrNull)}</div>
-	) : null
+	return <Menu items={menuItems} />
 }
 
 export default Market

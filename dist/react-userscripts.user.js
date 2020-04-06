@@ -1,7 +1,7 @@
 //==UserScript==
 //@name torn-tools
 //@namespace http://tampermonkey.net/
-//@version 0.5.0.34
+//@version 0.5.0.35
 //@description tools for http://torn.com
 //@author Jameson Aranda
 //@match https://www.torn.com
@@ -9221,6 +9221,51 @@ var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
 // CONCATENATED MODULE: ./src/utils.js
 function log(){var _console;for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}(_console=console).log.apply(_console,['Userscript (React Mode):'].concat(args));}function logFetch(arg){var url=new URL(arg,window.location);log('fetching',''+url);return fetch(''+url,{credentials:'include'});}function addLocationChangeCallback(callback){window.setTimeout(callback,0);var oldHref=window.location.href;var body=document.querySelector('body');var observer=new MutationObserver(function(mutations){if(mutations.some(function(){return oldHref!==document.location.href;})){oldHref=document.location.href;callback();}});observer.observe(body,{childList:true,subtree:true});return observer;}function awaitElement(_x){return _awaitElement.apply(this,arguments);}function _awaitElement(){_awaitElement=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(selector){var MAX_TRIES,tries;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:MAX_TRIES=60;tries=0;return _context.abrupt("return",new Promise(function(resolve,reject){function probe(){tries++;return document.querySelector(selector);}function delayedProbe(){if(tries>=MAX_TRIES){log("Can't find element with selector",selector);reject();return;}var elm=probe();if(elm){resolve(elm);return;}window.setTimeout(delayedProbe,250);}delayedProbe();}));case 3:case"end":return _context.stop();}}},_callee);}));return _awaitElement.apply(this,arguments);}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
+function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/slicedToArray.js
+
+
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
 // CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/defineProperty.js
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -9272,63 +9317,20 @@ function _objectSpread2(target) {
 
   return target;
 }
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
-function _iterableToArrayLimit(arr, i) {
-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-    return;
-  }
-
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
-}
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/slicedToArray.js
-
-
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
-}
+// CONCATENATED MODULE: ./src/Menu.jsx
+var Menu_appendVisibility=function appendVisibility(items){return items.map(function(item){return _objectSpread2({},item,{visible:typeof item.visible==='undefined'||typeof item.visible==='function'&&item.visible||!!item.visible});});};var Menu_buttonOrNull=function buttonOrNull(item){return item.visible?react_default.a.createElement("button",{onClick:function onClick(){return item.onClick();}},item.text):null;};var menuStyle={padding:'0.5rem',backgroundColor:'rgb(242, 242, 242)',width:'10rem',borderRadius:'0 5px 5px 0'};function Menu(){var _ref=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{},items=_ref.items;var menuItems=Menu_appendVisibility(items||[]);return menuItems.some(function(item){return item.visible;})?react_default.a.createElement("div",{style:menuStyle},menuItems.map(Menu_buttonOrNull)):null;}/* harmony default export */ var src_Menu = (Menu);
 // CONCATENATED MODULE: ./src/Market.jsx
 var marketItemSelector='.item-market-search-wrap > .items-list > .items .item';// const listItemElements = () =>
 // 	Array.from(document.querySelectorAll(marketItemSelector))
 var getTopItemElement=function getTopItemElement(){return document.querySelector(marketItemSelector);};var getBuyButton=function getBuyButton(e){return e.children[1];};// const getConfirmButton = e => e.nextElementSibling.children[0].children[2]
 var Market_buyTopItem=function buyTopItem(){var e=getTopItemElement();// listen for changes on the market list, and fire a callback when the row is added
-new MutationObserver(function(_ref,observer){var _ref2=_slicedToArray(_ref,1),mutation=_ref2[0];observer.disconnect();setTimeout(function(){mutation.target.children[2].click();},100);}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();};var Market_appendVisibility=function appendVisibility(items){return items.map(function(item){return _objectSpread2({},item,{visible:typeof item.visible==='undefined'||typeof item.visible==='function'&&item.visible||!!item.visible});});};var Market_buttonOrNull=function buttonOrNull(item){return item.visible?react_default.a.createElement("button",{onClick:function onClick(){return item.onClick();}},item.text):null;};function Market(){var menuItems=Market_appendVisibility([{text:'Buy Top Item',onClick:Market_buyTopItem}]);return menuItems.some(function(item){return item.visible;})?react_default.a.createElement("div",null,menuItems.map(Market_buttonOrNull)):null;}/* harmony default export */ var src_Market = (Market);
+new MutationObserver(function(_ref,observer){var _ref2=_slicedToArray(_ref,1),mutation=_ref2[0];observer.disconnect();setTimeout(function(){mutation.target.children[2].click();},100);}).observe(e.parentElement,{attributes:false,childList:true,subtree:true});getBuyButton(e).click();};function Market(){var menuItems=[{text:'Buy Top Item',onClick:Market_buyTopItem}];return react_default.a.createElement(src_Menu,{items:menuItems});}/* harmony default export */ var src_Market = (Market);
 // CONCATENATED MODULE: ./src/Faction.js
 function Faction(){return'faction';}/* harmony default export */ var src_Faction = (Faction);
 // CONCATENATED MODULE: ./src/Bazaar.js
 function Bazaar(){return'bazaar';}/* harmony default export */ var src_Bazaar = (Bazaar);
 // CONCATENATED MODULE: ./src/Toolbar.js
-var stickyWrapperStyle={position:'relative',height:'100%'};var toolbarStyle={position:'sticky',top:'0'};var menuStyle={padding:'0.5rem',backgroundColor:'rgb(242, 242, 242)',width:'10rem',borderRadius:'0 5px 5px 0'};function Toolbar(){return react_default.a.createElement("div",{style:stickyWrapperStyle},react_default.a.createElement("div",{style:toolbarStyle},function(){switch(window.location.pathname){case'/imarket.php':return react_default.a.createElement("div",{style:menuStyle},react_default.a.createElement(src_Market,null));case'/factions.php':return react_default.a.createElement("div",{style:menuStyle},react_default.a.createElement(src_Faction,null));case'/bazaar.php':return react_default.a.createElement("div",{style:menuStyle},react_default.a.createElement(src_Bazaar,null));default:return null;}}()));}/* harmony default export */ var src_Toolbar = (Toolbar);
+var stickyWrapperStyle={position:'relative',height:'100%'};var toolbarStyle={position:'sticky',top:'0'};function Toolbar(){return react_default.a.createElement("div",{style:stickyWrapperStyle},react_default.a.createElement("div",{style:toolbarStyle},function(){switch(window.location.pathname){case'/imarket.php':return react_default.a.createElement(src_Market,null);case'/factions.php':return react_default.a.createElement(src_Faction,null);case'/bazaar.php':return react_default.a.createElement(src_Bazaar,null);default:return null;}}()));}/* harmony default export */ var src_Toolbar = (Toolbar);
 // CONCATENATED MODULE: ./src/index.js
 log('React script has successfully started');function main(){return _main.apply(this,arguments);}function _main(){_main=_asyncToGenerator(/*#__PURE__*/regenerator_default.a.mark(function _callee(){var body,container;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return awaitElement('body');case 2:body=_context.sent;container=document.createElement('torn-tools');container.style.position='absolute';container.style.top='73px';container.style.height='100%';body.appendChild(container);react_dom_default.a.render(react_default.a.createElement(src_Toolbar,null),container);case 9:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}addLocationChangeCallback(function(){main().catch(function(e){log(e);});});
 
